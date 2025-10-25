@@ -30,9 +30,11 @@
 		"dev:native": "turbo -F native dev",
 		"dev:web": "turbo -F web dev",
 		"db:push": "turbo -F @my-better-t-app/db db:push",
+		"db:deploy": "turbo -F @my-better-t-app/db db:deploy",
 		"db:studio": "turbo -F @my-better-t-app/db db:studio",
 		"db:generate": "turbo -F @my-better-t-app/db db:generate",
-		"db:migrate": "turbo -F @my-better-t-app/db db:migrate"
+		"db:migrate": "turbo -F @my-better-t-app/db db:migrate",
+		"db:reset": "turbo -F @my-better-t-app/db db:reset"
 	},
 	"dependencies": {
 		"@ai-sdk/openai": "^2.0.53",

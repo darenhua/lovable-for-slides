@@ -13,10 +13,12 @@
 	},
 	"scripts": {
 		"build": "tsdown",
-		"db:push": "drizzle-kit push",
+		"db:push": "drizzle-kit push --dialect=postgresql --schema=./src/schema --url=postgresql://postgres:postgres@127.0.0.1:54322/postgres",
+		"db:deploy": "drizzle-kit push",
 		"db:studio": "drizzle-kit studio",
 		"db:generate": "drizzle-kit generate",
-		"db:migrate": "drizzle-kit migrate"
+		"db:migrate": "drizzle-kit migrate",
+		"db:reset": "supabase db reset"
 	},
 	"devDependencies": {
 		"drizzle-kit": "^0.31.2",

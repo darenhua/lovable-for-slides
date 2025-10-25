@@ -114,7 +114,7 @@ Create client in `apps/web/src/lib/` using `@supabase/supabase-js` with `NEXT_PU
 - `bun run check` - Biome format & lint
 - `bun run check-types` - TypeScript check
 
-**Database: IMPORTANT these must be run in the packages/db folder so make sure you're in that folder first**
+**Database: IMPORTANT these must be run in the root folder, NOT the app/web folder. So make sure you're in the root folder first**
 - `bun run db:generate` - Generate migrations
 - `bun run db:migrate` - Apply migrations
 - `bun run db:push` - Push schema directly (skip migrations)
