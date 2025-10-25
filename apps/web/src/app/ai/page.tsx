@@ -20,7 +20,7 @@ export default function AIPage() {
 
 	useEffect(() => {
 		messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-	}, [messages]);
+	}, []);
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -52,7 +52,11 @@ export default function AIPage() {
 							</p>
 							{message.parts?.map((part, index) => {
 								if (part.type === "text") {
-									return <Response key={index}>{part.text}</Response>;
+									return (
+										<Response key={`${message.id}-${index}`}>
+											{part.text}
+										</Response>
+									);
 								}
 								return null;
 							})}
