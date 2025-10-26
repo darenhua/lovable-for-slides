@@ -25,7 +25,8 @@
 			"!**/.svelte-kit",
 			"!**/wrangler.jsonc",
 			"!**/.source",
-			"!**/.conductor"
+			"!**/.conductor",
+			"!**/public/nutrient-assets"
 		]
 	},
 	"formatter": {

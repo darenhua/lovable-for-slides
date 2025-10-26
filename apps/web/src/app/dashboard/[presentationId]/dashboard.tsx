@@ -9,7 +9,11 @@ import {
 	ResizablePanelGroup,
 } from "@/components/ui/resizable";
 
-export default function Dashboard() {
+type Props = {
+	presentationId: string;
+};
+
+export default function Dashboard({ presentationId }: Props) {
 	return (
 		<div className="h-full w-full">
 			<ResizablePanelGroup direction="horizontal">
@@ -18,7 +22,7 @@ export default function Dashboard() {
 					<div className="flex h-full flex-col">
 						{/* PowerPoint Viewer */}
 						<div className="flex-1 overflow-hidden">
-							<PowerPointViewer />
+							<PowerPointViewer presentationId={presentationId} />
 						</div>
 
 						{/* Footer - Fixed height */}
