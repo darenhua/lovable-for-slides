@@ -1,4 +1,5 @@
 import { db, powerpoints } from "@my-better-t-app/db";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
 import { publicProcedure } from "../index";
 
@@ -20,5 +21,21 @@ export const powerpointsRouter = {
 				.returning();
 
 			return result;
+		}),
+
+	getById: publicProcedure
+		.input(z.object({ id: z.string().uuid() }))
+		.handler(async ({ input }) => {
+			const [presentation] = await db
+				.select()
+				.from(powerpoints)
+				.where(eq(powerpoints.id, input.id))
+				.limit(1);
+
+			if (!presentation) {
+				throw new Error("Presentation not found");
+			}
+
+			return presentation;
 		}),
 };
