@@ -1,16 +1,14 @@
-// import { google } from "@ai-sdk/google";
-import { openai } from "@ai-sdk/openai";
-import { convertToModelMessages, streamText, type UIMessage } from "ai";
+import type { UIMessage } from "ai";
+import { streamClaudeResponse } from "@/lib/claude-vercel-adapter";
 
 export const maxDuration = 30;
 
 export async function POST(req: Request) {
 	const { messages }: { messages: UIMessage[] } = await req.json();
 
-	const result = streamText({
-		model: openai("gpt-4o"),
-		messages: convertToModelMessages(messages),
+	return streamClaudeResponse(messages, {
+		// Optional: Override default options if needed
+		// model: 'claude-3-5-sonnet-20241022',
+		// maxTurns: 1,
 	});
-
-	return result.toUIMessageStreamResponse();
 }

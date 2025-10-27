@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { Response } from "@/components/response";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Tool } from "@/components/ui/tool";
 
 export default function AIPage() {
 	const [input, setInput] = useState("");
@@ -51,6 +52,7 @@ export default function AIPage() {
 								{message.role === "user" ? "You" : "AI Assistant"}
 							</p>
 							{message.parts?.map((part, index) => {
+								// Render text parts
 								if (part.type === "text") {
 									return (
 										<Response key={`${message.id}-${index}`}>
@@ -58,6 +60,67 @@ export default function AIPage() {
 										</Response>
 									);
 								}
+
+								// Render tool calls
+								if (
+									part.type === "tool-call" &&
+									"toolName" in part &&
+									typeof part.toolName === "string"
+								) {
+									return (
+										<Tool
+											key={`${message.id}-tool-${index}`}
+											toolPart={{
+												type: part.toolName,
+												state: "input-available",
+												input: part.input as Record<string, unknown>,
+												toolCallId: part.toolCallId as string,
+											}}
+										/>
+									);
+								}
+
+								// Render tool results
+								if (
+									part.type === "tool-result" &&
+									"toolName" in part &&
+									typeof part.toolName === "string"
+								) {
+									return (
+										<Tool
+											key={`${message.id}-result-${index}`}
+											toolPart={{
+												type: part.toolName,
+												state: "output-available",
+												output: part.output as Record<string, unknown>,
+												toolCallId: part.toolCallId as string,
+											}}
+										/>
+									);
+								}
+
+								// Render tool errors
+								if (
+									part.type === "tool-error" &&
+									"toolName" in part &&
+									typeof part.toolName === "string" &&
+									"error" in part
+								) {
+									return (
+										<Tool
+											key={`${message.id}-error-${index}`}
+											toolPart={{
+												type: part.toolName,
+												state: "output-error",
+												errorText: part.error
+													? String(part.error)
+													: "Unknown error",
+												toolCallId: part.toolCallId as string,
+											}}
+										/>
+									);
+								}
+
 								return null;
 							})}
 						</div>

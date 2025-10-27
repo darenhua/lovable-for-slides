@@ -19,9 +19,8 @@ export function FooterBar() {
 			{/* Right: Tabs */}
 			<Tabs defaultValue="tab1">
 				<TabsList>
-					<TabsTrigger value="tab1">View 1</TabsTrigger>
-					<TabsTrigger value="tab2">View 2</TabsTrigger>
-					<TabsTrigger value="tab3">View 3</TabsTrigger>
+					<TabsTrigger value="tab1">Design Mode</TabsTrigger>
+					<TabsTrigger value="tab2">Data Mode</TabsTrigger>
 				</TabsList>
 			</Tabs>
 		</div>

@@ -12,6 +12,7 @@
 	"dependencies": {
 		"@ai-sdk/google": "catalog:",
 		"@ai-sdk/react": "^2.0.39",
+		"@anthropic-ai/claude-agent-sdk": "^0.1.27",
 		"@my-better-t-app/api": "workspace:*",
 		"@my-better-t-app/auth": "workspace:*",
 		"@nutrient-sdk/viewer": "^1.8.0",
@@ -20,6 +21,8 @@
 		"@orpc/server": "catalog:",
 		"@orpc/tanstack-query": "^1.10.0",
 		"@orpc/zod": "catalog:",
+		"@radix-ui/react-collapsible": "^1.1.12",
+		"@radix-ui/react-slot": "^1.2.3",
 		"@radix-ui/react-tabs": "^1.1.13",
 		"@supabase/supabase-js": "^2.76.1",
 		"@tanstack/react-form": "^1.12.3",

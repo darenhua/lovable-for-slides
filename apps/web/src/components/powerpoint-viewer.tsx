@@ -61,9 +61,7 @@ export function PowerPointViewer({ presentationId }: Props) {
 					document: arrayBuffer,
 					baseUrl: `${window.location.protocol}//${window.location.host}/nutrient-assets/`,
 					// Show only sidebar toggle button in toolbar
-					toolbarItems: [
-						{ type: "sidebar-thumbnails" }
-					],
+					toolbarItems: [{ type: "sidebar-thumbnails" }],
 					initialViewState: new NutrientViewer.ViewState({
 						sidebarMode: NutrientViewer.SidebarMode.THUMBNAILS,
 					}),
